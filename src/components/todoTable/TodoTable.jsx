@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, withStyles, TableCell, Paper, TableHead, TableBody, TableRow, Fab, Icon } from '@material-ui/core';
+import { Table, withStyles, TableCell, Paper, TableHead, TableBody, TableRow } from '@material-ui/core';
 
 import TableStatusMenu from '../TableStatusMenu/TableStatusMenu';
 import EditButton from '../editButton/EditButton';
@@ -56,7 +56,7 @@ function createData(status, name, descr, date, priority, tag) {
   return { id, status, name, descr, date, priority, tag };
 }
 
-const rows = [
+export const rows = [
   createData(STATUS.IN_PROGRESS, 'Изучить React', 'Изучить React, Redux, React Router и тд.', '25.03.19', PRIORITY.URGENT_IMPORTANT, 'тег0'),
   createData(STATUS.COMPLETED, 'Изучить JS', 'Изучить основы JS', '25.03.19', PRIORITY.URGENT_IMPORTANT, 'тег1'),
 ];
