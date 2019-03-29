@@ -4,15 +4,25 @@ import { Typography } from '@material-ui/core';
 import TodoTable from '../todoTable/TodoTable';
 import AddTaskDrawer from '../addTaskDrawer/AddTaskDrawer';
 
-import { rows } from '../todoTable/TodoTable';
+let id = 0;
 
 class App extends Component {
   state = {
     isDrawerOpened: false,
+    tasks: [],
   }
 
-  handleAddButtonClick = () => {
-
+  addTask = (name, descr, status, priority, date, tag) => {
+    this.state.tasks.push({
+      id,
+      name,
+      descr,
+      status,
+      priority,
+      date,
+      tag
+    });
+    id++;
   }
 
   render() {
@@ -28,15 +38,11 @@ class App extends Component {
         </Typography>
 
         <AddTaskDrawer
-          name={rows[0].name}
-          descr={rows[0].descr}
-          date={rows[0].date}
-          priority={rows[0].priority}
-          status={rows[0].status}
-          tag={rows[0].tag}
+          tasks={this.state.tasks}
+          addTask={this.addTask}
         />
 
-        <TodoTable />
+        <TodoTable tasks={this.state.tasks}/>
       </>
     );
   }

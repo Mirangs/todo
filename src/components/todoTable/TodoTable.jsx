@@ -50,17 +50,6 @@ const PRIORITY = {
   NOT_URGENT_NOT_IMPORTANT: 'Не срочная не важная задача',
 }
 
-let id = 0;
-function createData(status, name, descr, date, priority, tag) {
-  id += 1;
-  return { id, status, name, descr, date, priority, tag };
-}
-
-export const rows = [
-  createData(STATUS.IN_PROGRESS, 'Изучить React', 'Изучить React, Redux, React Router и тд.', '25.03.19', PRIORITY.URGENT_IMPORTANT, 'тег0'),
-  createData(STATUS.COMPLETED, 'Изучить JS', 'Изучить основы JS', '25.03.19', PRIORITY.URGENT_IMPORTANT, 'тег1'),
-];
-
 class TodoTable extends Component {
   state = {
     isHovering: false,
@@ -79,7 +68,7 @@ class TodoTable extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, tasks } = this.props;
     const { isHovering } = this.state;
 
     return (
@@ -98,7 +87,7 @@ class TodoTable extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {tasks.map(row => (
               <TableRow 
                 className={classes.row} 
                 key={row.id} 
